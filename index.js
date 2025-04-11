@@ -80,11 +80,7 @@ const validateGroup = (formGroup) => {
     case "email":
       const emailInput = formGroup.querySelector("input");
       const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-      if (emailInput.value.trim() === "") {
-        displayError(formGroup, ".form__error--empty");
-        formValid = false;
-      } else if (!emailPattern.test(emailInput.value)) {
+     if (!emailPattern.test(emailInput.value)) {
         displayError(formGroup, ".form__error--valid");
         formValid = false;
       }
