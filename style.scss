@@ -15,7 +15,7 @@ body {
 }
 
 .form-container {
-  width: 650px;
+  max-width: 650px;
   padding: 30px;
   background-color: hsl(0, 0%, 100%);
   border-radius: 15px;
@@ -116,7 +116,7 @@ body {
   }
 
   &__checkbox {
-    width: 15px;
+    max-width: 15px;
   }
 
   &__star {
@@ -154,7 +154,7 @@ body {
   top: 30px;
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;
+  max-width: 400px;
   background-color: hsl(187, 24%, 22%);
   color: hsl(0, 0%, 100%);
   padding: 20px;
@@ -177,7 +177,7 @@ body {
     margin-bottom: 10px;
 
     img {
-      width: 14px;
+      max-width: 14px;
     }
 
     span {
@@ -188,7 +188,7 @@ body {
 
 @media screen and (max-width: 768px) {
   .form-container {
-    width: 300px;
+    max-width: 300px;
   }
 
   .form__name-inputs,
@@ -197,6 +197,6 @@ body {
   }
 
   .toast {
-    width: 300px;
+    max-width: 300px;
   }
 }

@@ -15,7 +15,7 @@ body {
 }
 
 .form-container {
-  width: 650px;
+  max-width: 650px;
   padding: 30px;
   background-color: hsl(0, 0%, 100%);
   border-radius: 15px;
@@ -95,7 +95,7 @@ body {
   accent-color: hsl(169, 82%, 27%);
 }
 .form__checkbox {
-  width: 15px;
+  max-width: 15px;
 }
 .form__star {
   color: hsl(169, 82%, 27%);
@@ -127,7 +127,7 @@ body {
   top: 30px;
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;
+  max-width: 400px;
   background-color: hsl(187, 24%, 22%);
   color: hsl(0, 0%, 100%);
   padding: 20px;
@@ -149,7 +149,7 @@ body {
   margin-bottom: 10px;
 }
 .toast__message img {
-  width: 14px;
+  max-width: 14px;
 }
 .toast__message span {
   font-weight: bold;
@@ -157,14 +157,14 @@ body {
 
 @media screen and (max-width: 768px) {
   .form-container {
-    width: 300px;
+    max-width: 300px;
   }
   .form__name-inputs,
   .form__query-options {
     flex-wrap: wrap;
   }
   .toast {
-    width: 300px;
+    max-width: 300px;
   }
 }
 
