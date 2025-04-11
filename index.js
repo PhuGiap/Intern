@@ -1,5 +1,5 @@
-const radioDivs = document.querySelectorAll(".query-type");
-const formGroups = document.querySelectorAll(".form-group");
+const radioDivs = document.querySelectorAll(".form__query-option");
+const formGroups = document.querySelectorAll(".form__group");
 const formElement = document.querySelector("form");
 const toast = document.querySelector(".toast");
 let formValid = true;
@@ -19,20 +19,21 @@ const changeRadioBg = () => {
   });
 };
 
-const displayError = (formGroup, error) => {
-  const errorMessage = formGroup.querySelector(error);
-  errorMessage.classList.remove("hidden");
+const displayError = (formGroup, errorClass) => {
+  const errorMessage = formGroup.querySelector(errorClass);
+  errorMessage.classList.remove("form__error--hidden");
 };
 
 const removeError = (formGroup) => {
-  const errorMessage = formGroup.querySelectorAll(".error");
-  errorMessage.forEach(error => {
-    error.classList.add("hidden");
-  })
+  const errorMessages = formGroup.querySelectorAll(".form__error");
+  errorMessages.forEach(error => {
+    error.classList.add("form__error--hidden");
+  });
 };
 
-const validateGroup = formGroup => {
-  const inputType = formGroup.querySelector("input, textarea").type || "text";
+const validateGroup = (formGroup) => {
+  const input = formGroup.querySelector("input, textarea");
+  const inputType = input?.type || input?.tagName?.toLowerCase() || "text";
 
   switch (inputType) {
     case "radio":
@@ -45,63 +46,69 @@ const validateGroup = formGroup => {
         }
       });
       if (!checked) {
-        displayError(formGroup, ".error");
+        displayError(formGroup, ".form__error");
         formValid = false;
       }
       break;
+
     case "checkbox":
       const checkInput = formGroup.querySelector("input");
 
       if (!checkInput.checked) {
-        displayError(formGroup, ".error");
+        displayError(formGroup, ".form__error");
         formValid = false;
       }
       break;
+
     case "text":
       const textInput = formGroup.querySelector("input");
       if (textInput.value.trim() === "") {
-        displayError(formGroup, ".error");
+        displayError(formGroup, ".form__error");
         formValid = false;
       }
       break;
+
     case "textarea":
       const textareaInput = formGroup.querySelector("textarea");
 
       if (textareaInput.value.trim() === "") {
-        displayError(formGroup, ".error");
+        displayError(formGroup, ".form__error");
         formValid = false;
       }
       break;
+
     case "email":
       const emailInput = formGroup.querySelector("input");
       const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        
-      if (!emailPattern.test(emailInput.value)) {
-        displayError(formGroup, ".valid");
+
+      if (emailInput.value.trim() === "") {
+        displayError(formGroup, ".form__error--empty");
+        formValid = false;
+      } else if (!emailPattern.test(emailInput.value)) {
+        displayError(formGroup, ".form__error--valid");
         formValid = false;
       }
       break;
+
     default:
       break;
   }
 };
 
 const displayToast = () => {
-  setTimeout(() => {
-    toast.classList.remove("hidden");
-  }, 10);
-  setTimeout(() => {
-    toast.classList.add("hidden");
-  }, 4000);
-}
+    toast.classList.remove("toast--hidden");
+  
+    setTimeout(() => {
+      toast.classList.add("toast--hidden");
+    }, 4000);
+  };
 
 // Event listeners
 
 document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.getItem('showToast') === 'true') {
-      displayToast();
-
-      localStorage.removeItem('showToast');
+    displayToast();
+    localStorage.removeItem('showToast');
   }
 });
 
@@ -110,18 +117,18 @@ radioDivs.forEach(radioDiv => {
     const radioInput = radioDiv.querySelector("input");
     radioInput.checked = true;
     changeRadioBg();
-    removeError(radioDiv.parentElement.parentElement);
+    removeError(radioDiv.closest(".form__group"));
   });
 });
 
 formElement.addEventListener("submit", event => {
   event.preventDefault();
-
   formValid = true;
 
   formGroups.forEach(formGroup => {
     validateGroup(formGroup);
   });
+
   if (formValid) {
     localStorage.setItem('showToast', 'true');
     formElement.submit();
@@ -142,5 +149,5 @@ formGroups.forEach(formGroup => {
 });
 
 toast.addEventListener("click", () => {
-  toast.classList.add("hidden");
+  toast.classList.add("form__toast--hidden");
 });
