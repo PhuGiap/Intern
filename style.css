@@ -11,7 +11,6 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  font-family: "Karla", sans-serif;
   font-size: 16px;
 }
 
@@ -57,16 +56,16 @@ body {
   font-size: 14px;
 }
 .form__input, .form__textarea {
-  border: 1px solid hsl(186, 15%, 59%);
-  font-size: 16px;
+  width: 100%;
   padding: 10px;
+  font-size: 16px;
+  border: 1px solid hsl(186, 15%, 59%);
   border-radius: 5px;
   margin: 8px 0;
-  width: 100%;
   cursor: pointer;
 }
 .form__input:hover, .form__textarea:hover {
-  border: 1px solid hsl(169, 82%, 27%);
+  border-color: hsl(169, 82%, 27%);
 }
 .form__input:focus, .form__textarea:focus {
   outline: 1px solid hsl(169, 82%, 27%);
@@ -81,22 +80,21 @@ body {
   flex-wrap: wrap;
 }
 .form__query-option {
-  border: 1px solid hsl(186, 15%, 59%);
-  padding: 10px 20px;
-  border-radius: 5px;
   display: flex;
   gap: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid hsl(186, 15%, 59%);
   cursor: pointer;
 }
 .form__query-option.radio-selected {
   background-color: hsl(148, 38%, 91%);
-  border: 1px solid hsl(169, 82%, 27%);
+  border-color: hsl(169, 82%, 27%);
 }
-.form__radio {
+.form__radio, .form__checkbox {
   accent-color: hsl(169, 82%, 27%);
 }
 .form__checkbox {
-  accent-color: hsl(169, 82%, 27%);
   width: 15px;
 }
 .form__star {
@@ -139,24 +137,20 @@ body {
   transition: transform 1s ease, opacity 1s ease;
   z-index: 999;
 }
-
 .toast--hidden {
   transform: translate(-50%, -200px);
   opacity: 0;
   pointer-events: none;
 }
-
 .toast__message {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 10px;
 }
-
 .toast__message img {
   width: 14px;
 }
-
 .toast__message span {
   font-weight: bold;
 }
@@ -165,9 +159,7 @@ body {
   .form-container {
     width: 300px;
   }
-  .form__name-inputs {
-    flex-wrap: wrap;
-  }
+  .form__name-inputs,
   .form__query-options {
     flex-wrap: wrap;
   }

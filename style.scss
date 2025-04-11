@@ -11,7 +11,6 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  font-family: "Karla", sans-serif;
   font-size: 16px;
 }
 
@@ -69,16 +68,16 @@ body {
 
   &__input,
   &__textarea {
-    border: 1px solid hsl(186, 15%, 59%);
-    font-size: 16px;
+    width: 100%;
     padding: 10px;
+    font-size: 16px;
+    border: 1px solid hsl(186, 15%, 59%);
     border-radius: 5px;
     margin: 8px 0;
-    width: 100%;
     cursor: pointer;
 
     &:hover {
-      border: 1px solid hsl(169, 82%, 27%);
+      border-color: hsl(169, 82%, 27%);
     }
 
     &:focus {
@@ -98,25 +97,25 @@ body {
   }
 
   &__query-option {
-    border: 1px solid hsl(186, 15%, 59%);
-    padding: 10px 20px;
-    border-radius: 5px;
     display: flex;
     gap: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid hsl(186, 15%, 59%);
     cursor: pointer;
 
     &.radio-selected {
       background-color: hsl(148, 38%, 91%);
-      border: 1px solid hsl(169, 82%, 27%);
+      border-color: hsl(169, 82%, 27%);
     }
   }
 
-  &__radio {
+  &__radio,
+  &__checkbox {
     accent-color: hsl(169, 82%, 27%);
   }
 
   &__checkbox {
-    accent-color: hsl(169, 82%, 27%);
     width: 15px;
   }
 
@@ -161,42 +160,38 @@ body {
   padding: 20px;
   border-radius: 10px;
   font-size: 14px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: transform 1s ease, opacity 1s ease;
   z-index: 999;
-}
 
-.toast--hidden {
-  transform: translate(-50%, -200px);
-  opacity: 0;
-  pointer-events: none;
-}
+  &--hidden {
+    transform: translate(-50%, -200px);
+    opacity: 0;
+    pointer-events: none;
+  }
 
-.toast__message {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
+  &__message {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
 
-.toast__message img {
-  width: 14px;
-}
+    img {
+      width: 14px;
+    }
 
-.toast__message span {
-  font-weight: bold;
+    span {
+      font-weight: bold;
+    }
+  }
 }
-
 
 @media screen and (max-width: 400px) {
   .form-container {
     width: 300px;
   }
 
-  .form__name-inputs {
-    flex-wrap: wrap;
-  }
-
+  .form__name-inputs,
   .form__query-options {
     flex-wrap: wrap;
   }
